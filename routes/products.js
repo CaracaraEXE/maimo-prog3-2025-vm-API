@@ -4,7 +4,7 @@ import Product from "../models/products.js";
 
 const findAllProducts = async (req, res) => {
   try {
-    const products = await Product.find().select("_id name categories");
+    const products = await Product.find().select("_id name price categories");
     return res
       .status(200)
       .send({ message: "Todos los products", products: products });
@@ -16,7 +16,7 @@ const findAllProducts = async (req, res) => {
 const findOneProduct = async (req, res) => {
   const { id } = req.params;
   try {
-    const product = await Product.findOne({ _id: id }).select("_id name categories");
+    const product = await Product.findOne({ _id: id }).select("_id name price categories");
     return res.status(200).send({ message: "Producto encontrado", product });
   } catch (error) {
     return res.status(501).send({ message: "Hubo un error", error });
@@ -24,9 +24,9 @@ const findOneProduct = async (req, res) => {
 };
 
 const addProduct = async (req, res) => {
-  const { name, categories } = req.body;
+  const { name, price, categories } = req.body;
   try {
-    const product = new Product({ name, categories });
+    const product = new Product({ name, price, categories });
     await product.save();
     return res.status(200).send({ message: "Producto creado", product });
   } catch (error) {
@@ -52,7 +52,7 @@ const deleteProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
   const { id } = req.params;
-  const { name } = req.body;
+  const { name, price } = req.body;
   try {
     const productToUpdate = await Product.findOne({ _id: id });
     if (!productToUpdate) {
@@ -61,6 +61,7 @@ const updateProduct = async (req, res) => {
 
     //Valores a actualizar
     productToUpdate.name = name;
+    productToUpdate.price = price;
 
 
 

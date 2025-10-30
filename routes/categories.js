@@ -4,6 +4,7 @@ import Category from "../models/category.js";
 const router = express.Router();
 
 // Crear categoría (name + slug)
+//TEST PARA VER SI FUNCIONA MI REPOSITORIO!
 router.post("/", async (req, res) => {
   try {
     const { name, slug } = req.body;

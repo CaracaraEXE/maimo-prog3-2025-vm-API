@@ -5,6 +5,7 @@ import indexRoutes from "./routes/index.js";
 import categoriesRoutes from "./routes/categories.js";
 import placeRoutes from "./routes/places.js"
 import eventRoutes from "./routes/events.js"
+import barrioRoutes from "./routes/barrios.js"
 
 /* Clear the console  */
 console.log("\x1Bc");
@@ -41,6 +42,7 @@ app.use("/", indexRoutes);
 app.use("/categories", categoriesRoutes);
 app.use("/events",eventRoutes);
 app.use("/places",placeRoutes);
+app.use("/barrios",barrioRoutes);
 
 /* Error handler  */
 // catch 404 and forward to error handler

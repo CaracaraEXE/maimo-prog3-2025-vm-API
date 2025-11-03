@@ -27,7 +27,7 @@ router.get("/", async (_req, res) => {
 });
 
 // Productos por categoría (slug o id)  -> ya lo teníamos
-router.get("/:key/products", async (req, res) => {
+router.get("/:key/events", async (req, res) => {
   const { key } = req.params;
   try {
     const isId = key.match(/^[0-9a-fA-F]{24}$/);
@@ -37,14 +37,14 @@ router.get("/:key/products", async (req, res) => {
 
     if (!category) return res.status(404).send({ message: "Categoría no encontrada" });
 
-    const products = await (await import("../models/products.js")).default
+    const events = await (await import("../models/events.js")).default
       .find({ categories: category._id })
-      .select("_id name categories")
+      .select("_id nombre categories")
       .populate("categories", "name slug");
 
     return res.status(200).send({
-      message: "Productos por categoría",
-      category: { _id: category._id, name: category.name, slug: category.slug },
+      message: "Eventos por categoría",
+      category: { _id: category._id, name: category.nombre, slug: category.slug },
       products
     });
   } catch (error) {

@@ -20,3 +20,8 @@ const findOnePlace = async(req,res) => {
         return res.status(501).send({message:"Failed",error})
     }
 }
+
+router.get("/",findAllPlaces);
+router.get("/", findOnePlace);
+
+export default router;

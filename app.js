@@ -2,7 +2,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import indexRoutes from "./routes/index.js";
-import categoriesRoutes from "./routes/categories.js";
 import lugarRoutes from "./routes/lugares.js"
 import eventRoutes from "./routes/eventos.js"
 import barrioRoutes from "./routes/barrios.js"
@@ -39,7 +38,6 @@ app.use(
 
 /* Routes */
 app.use("/", indexRoutes);
-app.use("/categories", categoriesRoutes);
 app.use("/eventos",eventRoutes);
 app.use("/lugares",lugarRoutes);
 app.use("/barrios",barrioRoutes);

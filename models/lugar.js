@@ -7,9 +7,9 @@ const lugarSchema = new Schema({
     coords:{type: [Number]},
 	entrada:{type: String},
 	acompa:{type: Boolean},
-    imagen:{type: String},
-    semana:{type: [Boolean]},
-    horarios:{type: String},
+    //imagen:{type: String},
+    //semana:{type: [Boolean]},
+    //horarios:{type: String},
 });
 
 export default mongoose.model('Lugar', lugarSchema, 'Lugares');

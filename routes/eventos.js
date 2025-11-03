@@ -1,6 +1,6 @@
 import express from "express";
 const router = express.Router();
-import Evento from "../models/event.js"
+import Evento from "../models/evento.js"
 
 const findAllEvents = async(req,res) => {
     try{
@@ -28,7 +28,7 @@ const findOneEvent = async(req,res) => {
 const addAnEvent = async (req, res) => {
     const {nombre, tematica, fecha, direccion, coords, entrada, acompa} = req.body
     try{
-        const evento = new Evento({nombre, tematica, fecha, direccion, coords, entrada, acompa})
+        const evento = new Evento({nombre, tematica, barrio, fecha, direccion, coords, entrada, acompa})
         await evento.save()
         return res.status(200).send({message:"Nuevo evento",evento})
     } catch(error){

@@ -3,8 +3,8 @@ import express from "express";
 import cors from "cors";
 import indexRoutes from "./routes/index.js";
 import categoriesRoutes from "./routes/categories.js";
-import placeRoutes from "./routes/places.js"
-import eventRoutes from "./routes/events.js"
+import lugarRoutes from "./routes/lugares.js"
+import eventRoutes from "./routes/eventos.js"
 import barrioRoutes from "./routes/barrios.js"
 
 /* Clear the console  */
@@ -40,8 +40,8 @@ app.use(
 /* Routes */
 app.use("/", indexRoutes);
 app.use("/categories", categoriesRoutes);
-app.use("/events",eventRoutes);
-app.use("/places",placeRoutes);
+app.use("/eventos",eventRoutes);
+app.use("/lugares",lugarRoutes);
 app.use("/barrios",barrioRoutes);
 
 /* Error handler  */

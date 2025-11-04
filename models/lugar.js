@@ -7,6 +7,7 @@ const lugarSchema = new Schema({
     coords:{type: [Number]},
 	entrada:{type: String},
 	acompa:{type: Boolean},
+    barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
     //imagen:{type: String},
     //semana:{type: [Boolean]},
     //horarios:{type: String},

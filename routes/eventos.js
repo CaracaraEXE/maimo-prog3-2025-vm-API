@@ -26,7 +26,7 @@ const findOneEvent = async(req,res) => {
 }
 
 const addAnEvent = async (req, res) => {
-    const {nombre, tematica, fecha, direccion, coords, entrada, acompa} = req.body
+    const {nombre, barrio, tematica, fecha, direccion, coords, entrada, acompa} = req.body
     try{
         const evento = new Evento({nombre, tematica, barrio, fecha, direccion, coords, entrada, acompa})
         await evento.save()

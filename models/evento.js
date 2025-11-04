@@ -8,7 +8,7 @@ const eventoSchema = new Schema({
     direccion:{type: String},
     coords:{type: [Number]},
     entrada:{type:String},
-    acompa:{type:String},
+    acompa:{type: Boolean},
     barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
 });
 

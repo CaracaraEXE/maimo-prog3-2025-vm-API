@@ -23,7 +23,7 @@ router.get("/", async (_req, res) => {
   }
 });
 
-router.get("/:key/places", async (req, res) => {
+router.get("/:key/eventos", async (req, res) => {
   const { key } = req.params;
   try {
     const isId = key.match(/^[0-9a-fA-F]{24}$/);
@@ -33,22 +33,22 @@ router.get("/:key/places", async (req, res) => {
 
     if (!barrio) return res.status(404).send({ message: "Categoría no encontrada" });
 
-    const events = await (await import("../models/events.js")).default
-      .find({ barrios: barrio._id })
-      .select("_id nombre barrios")
-      .populate("barrios", "name slug");
+    const eventos = await (await import("../models/evento.js")).default
+      .find({ barrio: barrio._id })
+      .select("_id nombre barrio")
+      .populate("barrio", "name slug");
 
     return res.status(200).send({
       message: "Eventos por categoría",
       barrio: { _id: barrio._id, name: barrio.nombre, slug: barrio.slug },
-      products
+      eventos
     });
   } catch (error) {
     return res.status(500).send({ message: "Hubo un error", error });
   }
 });
 
-router.get("/:key/events", async (req, res) => {
+router.get("/:key", async (req, res) => {
   const { key } = req.params;
   try {
     const isId = key.match(/^[0-9a-fA-F]{24}$/);
@@ -58,15 +58,21 @@ router.get("/:key/events", async (req, res) => {
 
     if (!barrio) return res.status(404).send({ message: "Categoría no encontrada" });
 
-    const events = await (await import("../models/events.js")).default
-      .find({ barrios: barrio._id })
-      .select("_id nombre barrios")
-      .populate("barrios", "name slug");
+    const lugares = await (await import("../models/lugar.js")).default
+      .find({ barrio: barrio._id })
+      .select("_id nombre barrio")
+      .populate("barrio", "name slug");
+
+      const eventos = await (await import("../models/evento.js")).default
+      .find({ barrio: barrio._id })
+      .select("_id nombre barrio")
+      .populate("barrio", "name slug");
 
     return res.status(200).send({
-      message: "Eventos por categoría",
+      message: "Lugares por Barrio",
       barrio: { _id: barrio._id, name: barrio.nombre, slug: barrio.slug },
-      products
+      lugares,
+      eventos
     });
   } catch (error) {
     return res.status(500).send({ message: "Hubo un error", error });

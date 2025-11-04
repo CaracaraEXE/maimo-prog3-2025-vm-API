@@ -4,7 +4,7 @@ import Lugar from "../models/lugar.js";
 
 const findAllPlaces = async(req, res) => {
     try{
-        const lugares = await Lugar.find().select("nombre direccion coords entrada acompa")
+        const lugares = await Lugar.find().select("nombre direccion coords entrada acompa barrio")
         return res.status(200).send({message:"Todos los lugares", lugares:lugares})
     } catch (error) {
         return res.status(501).send({message:"FAIL",error})
@@ -21,7 +21,19 @@ const findOnePlace = async(req,res) => {
     }
 }
 
+const addAPlace = async (req,res) => {
+    const {nombre, barrio, direccion, coords, entrada, acompa} = req.body;
+    try{
+        const lugar = new Lugar({nombre, barrio, direccion, coords, entrada, acompa})
+        await lugar.save()
+        return res.status(200).send({message:"Nuevo lugar",lugar})
+    } catch(error) {
+        return res.status(501).send({message:"FAIL",error})
+    }
+}
+
 router.get("/",findAllPlaces);
 router.get("/", findOnePlace);
+router.post("/", addAPlace) ;
 
 export default router;

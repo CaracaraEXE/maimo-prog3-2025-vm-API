@@ -33,7 +33,7 @@ const addAPlace = async (req,res) => {
 }
 
 router.get("/",findAllPlaces);
-router.get("/", findOnePlace);
+router.get("/:id", findOnePlace);
 router.post("/", addAPlace) ;
 
 export default router;

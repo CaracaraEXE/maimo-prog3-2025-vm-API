@@ -4,7 +4,7 @@ import Evento from "../models/evento.js"
 
 const findAllEvents = async(req,res) => {
     try{
-        const eventos = await Evento.find().select("_id nombre fecha direccion entrada")
+        const eventos = await Evento.find().select("_id nombre fecha direccion entrada barrio")
         return res
             .status(200)
             .send({message:"Todos los eventos", eventos:eventos})
@@ -16,7 +16,7 @@ const findAllEvents = async(req,res) => {
 const findOneEvent = async(req,res) => {
     const {id} = req.params;
     try{
-        const evento = await Evento.find().select("_id nombre tematica fecha direccion coords entrada acompa")
+        const evento = await Evento.find().select("_id nombre tematica fecha direccion coords entrada acompa barrio")
         return res
             .status(200)
             .send({message:"Tu evento", evento:evento})

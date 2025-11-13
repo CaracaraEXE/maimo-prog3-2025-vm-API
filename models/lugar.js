@@ -9,8 +9,9 @@ const lugarSchema = new Schema({
 	acompa:{type: Boolean},
     barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
     //imagen:{type: String},
-    //semana:{type: [Boolean]},
-    //horarios:{type: String},
+    semana:{type: [Boolean]},
+    horarios:{type: String},
+    howto:{type:String},
 });
 
 export default mongoose.model('Lugar', lugarSchema, 'Lugares');

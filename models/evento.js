@@ -10,6 +10,7 @@ const eventoSchema = new Schema({
     entrada:{type:String},
     acompa:{type: Boolean},
     barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
+    howto:{type:String},
 });
 
 export default mongoose.model('Evento', eventoSchema, 'Eventos');

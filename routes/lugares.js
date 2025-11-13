@@ -4,7 +4,7 @@ import Lugar from "../models/lugar.js";
 
 const findAllPlaces = async(req, res) => {
     try{
-        const lugares = await Lugar.find().select("nombre direccion coords entrada acompa barrio")
+        const lugares = await Lugar.find().select("nombre direccion coords entrada acompa barrio howto")
         return res.status(200).send({message:"Todos los lugares", lugares:lugares})
     } catch (error) {
         return res.status(501).send({message:"FAIL",error})

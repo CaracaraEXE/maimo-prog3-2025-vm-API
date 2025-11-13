@@ -14,7 +14,7 @@ const findAllPlaces = async(req, res) => {
 const findOnePlace = async(req,res) => {
     const {id} = req.params;
     try{
-        const lugar = await Lugar.findOne({_id:id}).select("nombre direccion coords entrada")
+        const lugar = await Lugar.findOne({_id:id}).select("nombre direccion coords entrada barrio acompa")
         return res.status(200).send({message:"Tu lugar",lugar:lugar})
     } catch(error){
         return res.status(501).send({message:"Failed",error})

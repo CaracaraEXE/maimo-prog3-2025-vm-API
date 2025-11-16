@@ -12,6 +12,7 @@ const lugarSchema = new Schema({
     semana:{type: [Boolean]},
     horarios:{type: String},
     howto:{type:String},
+    src:{type:String},
 });
 
 export default mongoose.model('Lugar', lugarSchema, 'Lugares');

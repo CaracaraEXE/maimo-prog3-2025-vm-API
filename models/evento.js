@@ -11,6 +11,7 @@ const eventoSchema = new Schema({
     acompa:{type: Boolean},
     barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
     howto:{type:String},
+    src:{type:String}
 });
 
 export default mongoose.model('Evento', eventoSchema, 'Eventos');

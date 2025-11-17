@@ -16,7 +16,7 @@ const findAllEvents = async(req,res) => {
 const findOneEvent = async(req,res) => {
     const {id} = req.params;
     try{
-        const evento = await Evento.findOne({ _id: id }).select("_id nombre tematica fecha direccion coords entrada acompa barrio howto src")
+        const evento = await Evento.findOne({ _id: id }).select("_id nombre tematica fecha direccion coords entrada acompa barrio howto src horarios")
         return res
             .status(200)
             .send({message:"Tu evento", evento:evento})

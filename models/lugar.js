@@ -13,6 +13,7 @@ const lugarSchema = new Schema({
     horarios:[{type: String}],
     howto:{type:String},
     src:{type:String},
+    tematica:{type:String},
 });
 
 export default mongoose.model('Lugar', lugarSchema, 'Lugares');

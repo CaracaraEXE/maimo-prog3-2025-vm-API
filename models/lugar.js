@@ -10,7 +10,7 @@ const lugarSchema = new Schema({
     barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
     //imagen:{type: String},
     semana:{type: [Boolean]},
-    horarios:{type: String},
+    horarios:[{type: String}],
     howto:{type:String},
     src:{type:String},
 });

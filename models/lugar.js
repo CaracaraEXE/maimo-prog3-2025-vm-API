@@ -8,7 +8,7 @@ const lugarSchema = new Schema({
 	entrada:{type: String},
 	acompa:{type: Boolean},
     barrio:[{ type: Schema.Types.ObjectId, ref: 'Barrio' }],
-    //imagen:{type: String},
+    img:{type: String},
     semana:{type: [Boolean]},
     horarios:[{type: String}],
     howto:{type:String},

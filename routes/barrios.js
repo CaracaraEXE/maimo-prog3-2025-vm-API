@@ -35,7 +35,7 @@ router.get("/:key/eventos", async (req, res) => {
 
     const eventos = await (await import("../models/evento.js")).default
       .find({ barrio: barrio._id })
-      .select("_id nombre barrio")
+      .select("_id nombre img fecha entrada direccion barrio")
       .populate("barrio", "name slug");
 
     return res.status(200).send({
@@ -60,7 +60,7 @@ router.get("/:key/lugares", async (req, res) => {
 
     const lugares = await (await import("../models/lugar.js")).default
       .find({ barrio: barrio._id })
-      .select("_id nombre barrio")
+      .select("_id nombre img entrada direccion barrio")
       .populate("barrio", "name slug");
 
     return res.status(200).send({

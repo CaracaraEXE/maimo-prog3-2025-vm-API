@@ -13,6 +13,7 @@ const eventoSchema = new Schema({
     howto:{type:String},
     src:{type:String},
     horarios:{type:String},
+    img:{type:String},
 });
 
 export default mongoose.model('Evento', eventoSchema, 'Eventos');

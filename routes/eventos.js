@@ -4,7 +4,7 @@ import Evento from "../models/evento.js"
 
 const findAllEvents = async(req,res) => {
     try{
-        const eventos = await Evento.find().select("_id nombre fecha direccion entrada barrio howto src")
+        const eventos = await Evento.find().select("_id nombre fecha direccion entrada barrio howto src img")
         return res
             .status(200)
             .send({message:"Todos los eventos", eventos:eventos})
@@ -16,7 +16,7 @@ const findAllEvents = async(req,res) => {
 const findOneEvent = async(req,res) => {
     const {id} = req.params;
     try{
-        const evento = await Evento.findOne({ _id: id }).select("_id nombre tematica fecha direccion coords entrada acompa barrio howto src horarios")
+        const evento = await Evento.findOne({ _id: id }).select("_id nombre tematica fecha direccion coords entrada acompa barrio howto src horarios img")
         return res
             .status(200)
             .send({message:"Tu evento", evento:evento})
@@ -26,9 +26,9 @@ const findOneEvent = async(req,res) => {
 }
 
 const addAnEvent = async (req, res) => {
-    const {nombre, barrio, tematica, fecha, direccion, coords, entrada, acompa, src, howto} = req.body
+    const {nombre, barrio, tematica, fecha, direccion, coords, entrada, acompa, src, howto, img} = req.body
     try{
-        const evento = new Evento({nombre, tematica, barrio, fecha, direccion, coords, entrada, acompa})
+        const evento = new Evento({nombre, tematica, barrio, fecha, direccion, coords, entrada, acompa, src, howto, img})
         await evento.save()
         return res.status(200).send({message:"Nuevo evento",evento})
     } catch(error){

@@ -48,7 +48,7 @@ router.get("/:key/eventos", async (req, res) => {
   }
 });
 
-router.get("/:key", async (req, res) => {
+router.get("/:key/lugares", async (req, res) => {
   const { key } = req.params;
   try {
     const isId = key.match(/^[0-9a-fA-F]{24}$/);
@@ -63,16 +63,10 @@ router.get("/:key", async (req, res) => {
       .select("_id nombre barrio")
       .populate("barrio", "name slug");
 
-      const eventos = await (await import("../models/evento.js")).default
-      .find({ barrio: barrio._id })
-      .select("_id nombre barrio")
-      .populate("barrio", "name slug");
-
     return res.status(200).send({
       message: "Lugares por Barrio",
       barrio: { _id: barrio._id, name: barrio.nombre, slug: barrio.slug },
       lugares,
-      eventos
     });
   } catch (error) {
     return res.status(500).send({ message: "Hubo un error", error });
